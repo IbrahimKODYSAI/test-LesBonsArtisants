@@ -24,7 +24,7 @@
     "html-webpack-plugin": "*",
     "ignore-styles": "*",
     "mini-css-extract-plugin": "*",
-    "mocha": "*",
+    "mocha": "^8.0.1",
     "node-sass": "*",
     "optimize-css-assets-webpack-plugin": "*",
     "postcss": "*",
