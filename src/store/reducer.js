@@ -1,25 +1,31 @@
-// import initialData from 'src/data/Products.json';
+import Dataproducts from 'src/data/Products.json';
 
 // == Initial State
 const initialState = {
-  products: [],
+  products: Dataproducts,
+  phoneName: '',
+  phoneType: '',
+  phonePrice: '',
+  phoneRating: '',
+  phoneWarranty: '',
+  // phoneAvailable: '',
 };
 
 // == Types
 export const GET_PRODUCTS = 'GET_PRODUCTS';
-const PRODUCT_DELETE = 'PRODUCT_DELETE';
+export const DELETE_PRODUCTS = 'DELETE_PRODUCTS';
+export const ON_SUBMIT_PRODUCT = 'ON_SUBMIT_PRODUCT';
+
 const SET_PRODUCTS = 'SET_PRODUCTS';
+const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
 // == Reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case PRODUCT_DELETE: {
-      const { products } = state;
-      const newProducts = products.filter(product => product._id !== action._id);
+    case ON_INPUT_CHANGE:
       return {
         ...state,
-        products: newProducts,
+        [action.name]: action.value,
       };
-    }
     case SET_PRODUCTS:
       return {
         ...state,
@@ -31,9 +37,14 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // == Action Creators
-export const productDelete = _id => ({
-  type: PRODUCT_DELETE,
-  _id,
+export const onInputChange = (name, value) => ({
+  type: ON_INPUT_CHANGE,
+  name,
+  value,
+});
+export const productDelete = productId => ({
+  type: DELETE_PRODUCTS,
+  productId,
 });
 export const getProducts = () => ({
   type: GET_PRODUCTS,
@@ -41,6 +52,9 @@ export const getProducts = () => ({
 export const setProducts = products => ({
   type: SET_PRODUCTS,
   products,
+});
+export const onSubmitProduct = () => ({
+  type: ON_SUBMIT_PRODUCT,
 });
 
 // == Export

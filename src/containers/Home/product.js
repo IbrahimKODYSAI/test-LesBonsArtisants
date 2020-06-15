@@ -5,9 +5,9 @@ import { productDelete } from 'src/store/reducer';
 
 const mapStateToProps = null;
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  removeProduct: () => {
-    dispatch(productDelete(ownProps._id));
+const mapDispatchToProps = dispatch => ({
+  removeProduct: (productId) => {
+    dispatch(productDelete(productId));
   },
 });
 

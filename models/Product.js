@@ -23,7 +23,7 @@ const ProductSchema = mongoose.Schema({
   },
   available: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   date: {
     type: Date,

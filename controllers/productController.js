@@ -8,7 +8,7 @@ module.exports = {
       price: req.body.price,
       rating: req.body.rating,
       warranty_years: req.body.warranty_years,
-      available: req.body.available,
+      // available: req.body.available,
     });
     try {
       const savedProduct = await product.save();
@@ -41,8 +41,8 @@ module.exports = {
 
   deleteProduct: async (req, res) => {
     try {
-      const updateProduct = await Product.updateOne({ _id: req.params.productId }, req.body);
-      res.json(updateProduct);
+      const removeProduct = await Product.remove({ _id: req.params.productId });
+      res.json(removeProduct);
     }
     catch (err) {
       res.json({ message: err });

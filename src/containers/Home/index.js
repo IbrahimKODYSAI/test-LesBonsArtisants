@@ -2,16 +2,25 @@ import { connect } from 'react-redux';
 
 import Home from 'src/components/Home';
 
-import { getProducts } from 'src/store/reducer';
+import { getProducts, onSubmitProduct } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   products: state.products,
+  phoneName: state.phoneName,
+  phoneType: state.phoneType,
+  phonePrice: state.phonePrice,
+  phoneRating: state.phoneRating,
+  phoneWarranty: state.phoneWarranty,
+  // phoneAvailable: state.phoneavailable,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getListProducts: () =>  {
+  getListProducts: () => {
     dispatch(getProducts());
-  }
+  },
+  onSubmitForm: () => {
+    dispatch(onSubmitProduct());
+  },
 });
 
 // Container

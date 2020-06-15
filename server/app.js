@@ -45,6 +45,7 @@ else {
 
 // import routes
 server.use('/api/product', require('../routes/product'));
+server.use('/api/user', require('../routes/user'));
 
 
 // linstening to the server

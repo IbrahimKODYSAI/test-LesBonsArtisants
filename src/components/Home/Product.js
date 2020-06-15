@@ -15,8 +15,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const deleteProduct = (productId) => {
+  fetch(`http://localhost:3000/api/product/${productId}`, {
+    method: 'delete',
+  })
+    .then(response => response)
+    .catch(error => error);
+};
 
-const Product = ({ 
+const Product = ({
+  _id,
   removeProduct,
   name,
   type,
@@ -31,7 +39,6 @@ const Product = ({
       <ListItem alignItems="flex-start">
         <ListItemText
           primary={name}
-          secondary={"lol"}
         />
         <ul>
           {/* <li>Name : {data.name}</li> */}
@@ -42,7 +49,7 @@ const Product = ({
           <li>Available: {available === false ? 'No' : 'Yes'} </li>
         </ul>
       </ListItem>
-      <button type="button" onClick={removeProduct}>Delete</button>
+      <button type="button" onClick={removeProduct(_id)}>Delete</button>
       <Divider component="li" />
     </List>
   );
@@ -55,6 +62,7 @@ Product.propTypes = {
   rating: PropTypes.number.isRequired,
   warranty_years: PropTypes.number.isRequired,
   available: PropTypes.bool.isRequired,
+  _id: PropTypes.string.isRequired,
   removeProduct: PropTypes.func.isRequired,
 };
 
