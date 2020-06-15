@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import './home.scss';
 import Product from 'src/containers/Home/Product';
 
-const Home = ({ datas }) => {
-
+const Home = ({ products, getListProducts }) => {
+  getListProducts();
   return (
     <div>
       <ul>
-        {datas.map(data => (
-          <Product key={data._id} {...data} />
+        {products.map(product => (
+          <Product key={product._id} {...product} />
         ))}
       </ul>
     </div>
@@ -19,11 +19,12 @@ const Home = ({ datas }) => {
 };
 
 Home.propTypes = {
-  datas: PropTypes.arrayOf(
+  products: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  getListProducts: PropTypes.func.isRequired,
 };
 
 export default Home;

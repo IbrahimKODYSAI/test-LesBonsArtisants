@@ -2,11 +2,17 @@ import { connect } from 'react-redux';
 
 import Home from 'src/components/Home';
 
+import { getProducts } from 'src/store/reducer';
+
 const mapStateToProps = state => ({
-  datas: state.datas,
+  products: state.products,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  getListProducts: () =>  {
+    dispatch(getProducts());
+  }
+});
 
 // Container
 const HomeContainer = connect(
